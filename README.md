@@ -17,3 +17,6 @@ ChatO is an advanced real-time chat application built with Firebase for authenti
 2. Configure Firebase for authentication and Firestore.  
 3. Run the project using Maven.  
 
+running instructions:
+server: java -cp "target/ChatO-1.0-SNAPSHOT.jar;target/dependency/*" com.chatapp.Server
+client: java -cp "target/ChatO-1.0-SNAPSHOT.jar;target/dependency/*" com.chatapp.Client
