@@ -1,7 +1,6 @@
 # ChatO  - A java Chat Application.
 
-ChatO is an advanced real-time chat application built with Firebase for authentication and database management. The project is structured with Maven for dependency handling and is designed to support scalable integrations. While OpenAI API functionality has not been implemented yet, the core system for authentication and messaging is functional.  
-
+ChatO is an advanced real-time chat application built with Firebase for authentication and database management. The project is structured with Maven for dependency handling and is designed to support scalable integrations.
 ## Features  
 - **Firebase Authentication:** Secure login and user management.  
 - **Firestore Database:** Real-time storage and retrieval of messages.  
