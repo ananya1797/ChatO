@@ -56,67 +56,49 @@ Click "Generate new private key" and download the resulting JSON file.
 
 Important: For security, do not place this key inside the project folder. Store it in a safe, permanent location on your computer (e.g., C:\Users\YourUser\Documents\secrets\).
 
-In your project, navigate to the src/main/java/com/chatapp/ directory and open the FirebaseConfig.java file. It is configured to load the key path from an environment variable, which is the secure, recommended approach.
+The FirebaseConfig.java file in the project is configured to load this key's path from an environment variable, which is the secure, recommended approach.
 
 2. Redis Setup with Docker
-Redis will act as the message broker. The easiest way to run it is with Docker.
-
 Open a terminal and pull the official Redis image:
 
 docker pull redis
 
-Run the Redis container. This command will start a container named my-redis and map the port 6379.
+Run the Redis container. This command starts a container named my-redis and maps the port 6379.
 
 docker run -d --name my-redis -p 6379:6379 redis
 
-To verify that Redis is running, use the command docker ps. You should see my-redis in the list of running containers.
+Verify that Redis is running with docker ps.
 
 3. Build the Application
-Open your terminal and navigate to the root directory of the ChatO project.
+Open your terminal and navigate to the root directory of the project.
 
 Run the Maven build command:
 
 mvn clean install
 
-This will compile the code and download all the necessary dependencies.
-
 4. Running the Application
-You will need to open several separate terminal windows to run the servers and clients.
+To run the application, you will need to open several separate terminal windows.
 
 To Run a Server:
-In each terminal you want to run a server, you must first set the environment variable pointing to your Firebase key.
+In each terminal for a server, you must first set the environment variable pointing to your Firebase key.
 
-# Set the environment variable (use the correct path for your key)
-# For Windows PowerShell:
+For Windows PowerShell:
+
 $env:GOOGLE_APPLICATION_CREDENTIALS="C:\path\to\your\firebase-key.json"
-# For Git Bash / Linux / macOS:
+
+For Git Bash / Linux / macOS:
+
 export GOOGLE_APPLICATION_CREDENTIALS="/path/to/your/firebase-key.json"
 
-# Run the server on a specific port (e.g., 9000)
+After setting the variable, run the server on a specific port (e.g., 9000):
+
 mvn exec:java "-Dexec.mainClass=com.chatapp.Server" "-Dexec.args=9000"
 
-To run a second server, open a new terminal and repeat the steps above, but use a different port (e.g., 9001).
+To run a second server, open a new terminal and repeat the steps, using a different port (e.g., 9001).
 
 To Run a Client:
-You do not need to set the environment variable for the client.
+In a new terminal, run the client and point it to a running server.
 
-# In a new terminal, run the client and point it to a server
-# Example: Connecting to the server on port 9000
 mvn exec:java "-Dexec.mainClass=com.chatapp.Client" "-Dexec.args=localhost 9000"
 
-A Java Swing GUI will pop up. Enter a username to join the chat.
-
-How to Use
-Chat: Type in the text field and press Enter to send a message.
-
-Send a File: Click the "Send File" button.
-
-Commands:
-
-/online: See who is currently in the chat.
-
-/joke: Get a random programming joke.
-
-/time: See the current server time.
-
-/help: See a list of available commands.
+A GUI will appear. Enter a username to begin chatting.
